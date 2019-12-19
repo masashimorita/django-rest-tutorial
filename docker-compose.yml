@@ -4,6 +4,8 @@ services:
     image: postgres:11.1-alpine
     volumes:
       - postgresql:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
   app:
     build: .
     command: pipenv run server
