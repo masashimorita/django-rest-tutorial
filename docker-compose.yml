@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: postgres:11.1-alpine
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+  app:
+    build: .
+    command: pipenv run server
+    volumes:
+      - .:/app
+    ports:
+      - 7000:7000
+    depends_on:
+      - db
+volumes:
+  postgresql:
